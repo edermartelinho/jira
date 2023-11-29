@@ -101,3 +101,23 @@ model Comment {
   User      User?    @relation(fields: [userId], references: [id])
   userId    Int
 }
+
+model Sprint {
+  id               Int             @id @default(autoincrement())
+  createdAt        DateTime        @default(now())
+  nameSprint       String   
+  initialDate      DateTime 
+  finalDate        DateTime
+}
+
+model SprintTasks {
+  id               Int             @id @default(autoincrement())
+  taskId           Int
+  sprintId         Int 
+  Sprint           Sprint          @relation (fields:[sprintId], references [id])
+}            
+
+
+
+
+
